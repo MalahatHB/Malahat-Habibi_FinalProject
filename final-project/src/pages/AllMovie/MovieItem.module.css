@@ -1,0 +1,4 @@
+.listCard {
+    display: inline-flex !important;
+    flex-direction: row !important;
+}

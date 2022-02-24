@@ -1,0 +1,26 @@
+body {
+  background-color: #272727;
+  color: white;
+}
+
+h2 {
+    color: #aa1111;
+    padding-bottom: 25px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.addButton {
+  text-align: right;
+}
+
+.addButton button {
+  padding: 9px 60px;
+  background-color: #aa1111;
+  color: white;
+  border: 1px solid #aa1111;
+  border-radius: 4px;
+  font-weight: bold;
+}

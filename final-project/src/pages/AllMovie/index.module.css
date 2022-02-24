@@ -1,0 +1,12 @@
+.addButton {
+    text-align: right;
+}
+  
+.addButton button {
+    padding: 9px 60px;
+    background-color: #aa1111;
+    color: white;
+    border: 1px solid #aa1111;
+    border-radius: 4px;
+    font-weight: bold;
+}
