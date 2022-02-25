@@ -2,6 +2,7 @@ import { Row, Col } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import api from '../../api/api';
 import AddMovieForm from './AddMovieForm';
+import './index.css';
 
 function AddMoviePage() {
     const history = useHistory();
@@ -20,7 +21,7 @@ function AddMoviePage() {
 
     return (
         <section>
-            <Row>
+            <Row className="page-margin">
                 <Col>
                     <h2>Add Movie</h2>
                 </Col>

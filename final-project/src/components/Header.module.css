@@ -1,10 +1,19 @@
-.header{
+.header {
     background-color: #09090f;
     color: white;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 30px;
     text-align: left;
     padding-left: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header :hover {
+    color: white;
 }

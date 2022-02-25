@@ -4,19 +4,19 @@
     margin-right: 2%;
     margin-left: 2%;
     padding: 0;
-  }
+}
 
 .list li {
-  width: 100%;
+    width: 100%;
 }
 
 li img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 5px;
-  margin: 5px;
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    margin: 5px;
 }
 
 .card {
-  flex-direction: row !important;
+    flex-direction: row !important;
 }

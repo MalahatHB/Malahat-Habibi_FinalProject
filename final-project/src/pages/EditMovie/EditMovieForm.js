@@ -1,13 +1,13 @@
-import './AddMovieForm.css';
+import './EditMovieForm.css';
 
 import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-function AddMovieForm(props) {
-    const [movieName, setMovieName] = useState();
-    const [movieImage, setMovieImage] = useState();
-    const [movieYear, setMovieConstructionYear] = useState();
-    const [movieDescription, setMovieDescription] = useState();
+function EditMovieForm(props) {
+    const [movieName, setMovieName] = useState(props.movie.name);
+    const [movieImage, setMovieImage] = useState(props.movie.image);
+    const [movieYear, setMovieConstructionYear] = useState(props.movie.year);
+    const [movieDescription, setMovieDescription] = useState(props.movie.description);
 
     function handleName(e) {
         setMovieName(e.target.value);
@@ -28,6 +28,7 @@ function AddMovieForm(props) {
     function handleSubmit (event) {
         event.preventDefault();
         const movieData = {
+            id: props.movie.id,
             name: movieName,
             image: movieImage,
             year: movieYear,
@@ -70,4 +71,4 @@ function AddMovieForm(props) {
     );
 }
 
-export default AddMovieForm;
+export default EditMovieForm;

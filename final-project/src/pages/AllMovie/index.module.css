@@ -9,4 +9,27 @@
     border: 1px solid #aa1111;
     border-radius: 4px;
     font-weight: bold;
+    margin-top: 10px;
+}
+
+.pageMargin {
+    margin: 20px 30px !important;
+}
+
+.toggleButton {
+    text-align: right;
+}
+
+.toggleButton button {
+    padding: 10px 65px;
+    background-color: #aa1111;
+    color: white;
+    border: 1px solid #aa1111;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.searchBar {
+    margin-top: 10px;
 }

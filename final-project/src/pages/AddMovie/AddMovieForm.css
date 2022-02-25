@@ -38,3 +38,7 @@
     border-radius: 4px;
     font-weight: bold;
 }
+
+.page-margin {
+    margin: 20px 30px !important;
+}

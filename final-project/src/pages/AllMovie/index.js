@@ -4,13 +4,13 @@ import classes from './index.module.css';
 import api from "../../api/api";
 import ListView from '../../components/ListView';
 import GridView from '../../components/GridView';
-import MovieItem from "./MovieItem";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function AllMoviesPage() {
     const [movieList, setMovieList] = useState();
     const [isListView, setIsListView] = useState(true);
     const [isListEmpty, setIsListEmpty] = useState(true);
+    const [search, setSearch] = useState();
     const histroy = useHistory();
 
     useEffect(() => { 
@@ -28,6 +28,40 @@ function AllMoviesPage() {
             }); 
     }, []);
 
+    useEffect(() => { 
+        if (search) {
+            api.fetchFilteredMovieList(search)
+            .then((response) => {
+                setMovieList(response.data);
+                if (Object.keys(response.data).length > 0) {
+                    setIsListEmpty(false);
+                }
+            }).catch((error) => {
+                setIsListEmpty(true);
+                setMovieList([]);
+            });
+        }
+        else {
+            api.fetchMovieList()
+            .then((response) => {
+                console.log(response.data);
+                setMovieList(response.data);
+                if (Object.keys(response.data).length > 0) {
+                    setIsListEmpty(false);
+                }
+            }).catch((error) => {
+                console.log(error);
+                setIsListEmpty(true);
+                setMovieList([]);
+            });
+        }
+    }, [search]);
+
+
+    function searchHandler(e) {
+        setSearch(e.target.value);
+    }
+
     function toggleListGridHandler() {
         setIsListView(!isListView);
     }
@@ -39,17 +73,17 @@ function AllMoviesPage() {
     if (isListEmpty) {
         return (
             <section>
-                <Row>
+                <Row className={classes.pageMargin}>
                     <Col>
                         <h2>Home</h2>
                     </Col>
                     <Col className={classes.addButton}>
-                        <button title="Add Movie">ADD</button>
+                        <button onClick={addButtonHandler} title="Add Movie">ADD</button>
                     </Col>
-                </Row> 
-
-                <Row>
+                </Row>
+                <Row className={classes.pageMargin}>
                     <h4>There is no Movie yet! Do you want to add some?</h4>
+                    <h5>You can use the ADD button to add movies.</h5>
                 </Row>
             </section>
         );
@@ -57,7 +91,7 @@ function AllMoviesPage() {
 
     return (
         <section>
-            <Row>
+            <Row className={classes.pageMargin}>
                 <Col>
                     <h2>Home</h2>
                 </Col>
@@ -65,16 +99,15 @@ function AllMoviesPage() {
                     <button title="Add Movie" onClick={addButtonHandler}>ADD</button>
                 </Col>
             </Row> 
-
-            <Row>
-                <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder="Search..." />
-                </div>
-                <div className="col-md-6 text-right">       
-                    <button  onClick={toggleListGridHandler}>
+            <Row className={classes.pageMargin}>
+                <Col className={classes.searchBar}>
+                    <input type="text" className="form-control" placeholder="Search..." onChange={searchHandler} value={search}/>
+                </Col>
+                <Col className={classes.toggleButton}>       
+                    <button onClick={toggleListGridHandler}>
                         {isListView ? "List" : "Grid" }
                     </button>
-                </div>
+                </Col>
             </Row>
 
             {isListView ? <ListView movieList={movieList} /> : <GridView movieList={movieList} />}
